@@ -6,7 +6,7 @@
 def call(){
     env.STAGE = "Paso 1: Build  Test"
     stage("$env.STAGE "){
-    // stage("Paso 1: Build && Test"){
+    // stage("Paso 1: Build - Test"){
         sh "gradle clean build"
     }
 
@@ -23,7 +23,7 @@ def call(){
     stage("$env.STAGE "){
     // stage("Paso 3: Curl Springboot Gradle sleep 40"){
         sh "gradle bootRun&"
-        sh "sleep 40 && curl -X GET 'http://localhost:8081/rest/mscovid/test?msg=testing'"
+        sh "sleep 40 - curl -X GET 'http://localhost:8081/rest/mscovid/test?msg=testing'"
     }
 
      env.STAGE = "Paso 4: Subir Nexus"
@@ -65,7 +65,7 @@ def call(){
     env.STAGE = "Paso 7: Testear Artefacto - Dormir(Esperar 20sg) "
     stage("$env.STAGE "){
     // stage("Paso 7: Testear Artefacto - Dormir(Esperar 20sg) "){
-        sh "sleep 20 && curl -X GET 'http://localhost:8081/rest/mscovid/test?msg=testing'"
+        sh "sleep 20 - curl -X GET 'http://localhost:8081/rest/mscovid/test?msg=testing'"
     }
 }
 return this;
